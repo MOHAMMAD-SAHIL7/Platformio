@@ -1,0 +1,30 @@
+// Define pins
+const int inputA = 2;
+const int inputB = 3;
+const int selector = 4;
+const int outputLED = 5;
+
+void setup() {
+  // Set the input pins as input
+  pinMode(inputA, INPUT);
+  pinMode(inputB, INPUT);
+  pinMode(selector, INPUT);
+
+  // Set the output pin as output
+  pinMode(outputLED, OUTPUT);
+}
+
+void loop() {
+  int select = digitalRead(selector);
+  int result;
+
+  // If selector is LOW, pick input A; else pick input B
+  if (select == LOW) {
+    result = digitalRead(inputA);
+  } else {
+    result = digitalRead(inputB);
+  }
+
+  // Display the result on the LED
+  digitalWrite(outputLED, result);
+}
